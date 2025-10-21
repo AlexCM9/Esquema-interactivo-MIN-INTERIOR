@@ -4,389 +4,60 @@
   "children": [
     {
       "name": "Secretaría de Estado de Seguridad",
+      "area": "seguridad",
+      "description": "<p>La <strong class='kw sec'>Secretaría de Estado de Seguridad</strong> coordina las políticas de <strong class='kw sec'>seguridad ciudadana</strong>, <strong class='kw sec'>cooperación policial internacional</strong> y la dirección de cuerpos como la <strong class='kw sec'>Policía</strong> y la <strong class='kw sec'>Guardia Civil</strong>.</p>",
       "children": [
         {
-          "name": "Oficina de Comunicación (Subdirección General)"
+          "name": "Dirección General de la Policía",
+          "area": "seguridad",
+          "description": "<p>Garantiza la <strong class='kw sec'>seguridad ciudadana</strong>, la <strong class='kw sec'>prevención del delito</strong> y la <strong class='kw sec'>investigación criminal</strong>.</p>"
         },
         {
-          "name": "Gabinete (Dirección General)"
+          "name": "Dirección General de la Guardia Civil",
+          "area": "seguridad",
+          "description": "<p>Responsable de la <strong class='kw sec'>seguridad rural</strong>, <strong class='kw sec'>fronteras</strong> y servicios especializados como <strong class='kw sec'>SEPRONA</strong>.</p>"
         },
         {
-          "name": "Gabinete (Orgánico de Subdirección General)"
-        },
-        {
-          "name": "Centro de Inteligencia contra el Terrorismo y el Crimen Organizado (CITCO)"
-        },
-        {
-          "name": "Comité Ejecutivo de Coordinación"
-        },
-        {
-          "name": "Organismo Autónomo Gerencia de Infraestructuras y Equipamiento de la Seguridad del Estado (Adscrito)"
-        },
-        {
-          "name": "Subdirección General de Planificación y Gestión de Infraestructuras y Medios para la Seguridad"
-        },
-        {
-          "name": "Subdirección General de Sistemas de Información y Comunicaciones para la Seguridad"
-        },
-        {
-          "name": "Oficina Nacional de Retirada de Contenidos Ilícitos en Internet (UNECI)"
-        },
-        {
-          "name": "Delegado de Protección de Datos de la S.E.S."
-        }
-      ]
-    },
-    {
-      "name": "Dirección General de la Policía",
-      "children": [
-        {
-          "name": "Comisaría General de Seguridad Ciudadana"
-        },
-        {
-          "name": "Comisaría General de Información"
-        },
-        {
-          "name": "Comisaría General de Policía Judicial"
-        },
-        {
-          "name": "Comisaría General de Extranjería y Fronteras"
-        },
-        {
-          "name": "Comisaría General Policía Científica"
-        },
-        {
-          "name": "Unidades Territoriales"
-        },
-        {
-          "name": "Unidades Adscritas a las CC.AA"
-        },
-        {
-          "name": "Comisarías Especiales"
-        },
-        {
-          "name": "Subdirección Gral. de RRHH y Formación",
-          "children": [
-            {
-              "name": "División de Personal"
-            },
-            {
-              "name": "División de Formación y Perfeccionamiento"
-            }
-          ]
-        },
-        {
-          "name": "Subdirección Gral. de Logística e Innovación",
-          "children": [
-            {
-              "name": "División Económica y Técnica"
-            },
-            {
-              "name": "División de Documentación"
-            }
-          ]
-        },
-        {
-          "name": "Organización Periférica",
-          "children": [
-            {
-              "name": "Jefaturas Superiores"
-            },
-            {
-              "name": "Comisarías Provinciales"
-            },
-            {
-              "name": "Comisarías Zonales"
-            },
-            {
-              "name": "Comisarías Locales"
-            },
-            {
-              "name": "Comisarías Distrito"
-            }
-          ]
-        },
-        {
-          "name": "Unidades de Cooperación Policial en los Centros de Cooperación Policial y Aduanera"
-        },
-        {
-          "name": "Puestos Fronterizos"
-        },
-        {
-          "name": "Unidades de Documentación"
-        },
-        {
-          "name": "Oficina Nacional de Información sobre pasajeros (ONIP)",
-          "children": [
-            {
-              "name": "Unidad de Información sobre pasajeros (PIU) nacional"
-            }
-          ]
-        },
-        {
-          "name": "Unidad de Policía Judicial para delitos de terrorismo (TEPOL)"
-        }
-      ]
-    },
-    {
-      "name": "Dirección General de la Guardia Civil",
-      "children": [
-        {
-          "name": "El Estado Mayor"
-        },
-        {
-          "name": "Jefatura de Información"
-        },
-        {
-          "name": "Jefatura de Policía Judicial"
-        },
-        {
-          "name": "Jefatura de Personal"
-        },
-        {
-          "name": "Jefatura de Enseñanza"
-        },
-        {
-          "name": "Jefatura de Asistencia al Personal"
-        },
-        {
-          "name": "Secretaría Permanente para la Evaluación y Clasificación"
-        },
-        {
-          "name": "Mando de Apoyo (Teniente General)"
-        },
-        {
-          "name": "Jefatura de los Servicios de Apoyo"
-        },
-        {
-          "name": "Jefatura de Servicios Técnicos"
-        },
-        {
-          "name": "Jefatura de Asuntos Económicos"
-        },
-        {
-          "name": "Organización Periférica",
-          "children": [
-            {
-              "name": "Zonas"
-            },
-            {
-              "name": "Comandancias"
-            },
-            {
-              "name": "Compañías"
-            },
-            {
-              "name": "Puestos"
-            }
-          ]
-        },
-        {
-          "name": "Mando de Fronteras y Policía Marítima"
-        },
-        {
-          "name": "Mando de Personal"
-        },
-        {
-          "name": "División de Operaciones y Transformación Digital"
-        },
-        {
-          "name": "CNPIC: Centro Nacional de Protección de Infraestructuras Críticas"
-        },
-        {
-          "name": "La Jefatura de Unidades Especiales y de Reserva"
-        },
-        {
-          "name": "La Jefatura de la Agrupación de Tráfico"
-        },
-        {
-          "name": "SEPRONA (Servicio Protección Naturaleza)"
-        },
-        {
-          "name": "La Jefatura de Armas, Explosivos y Seguridad"
-        },
-        {
-          "name": "Zonas de la Guardia Civil"
-        },
-        {
-          "name": "Comandancias de Ceuta y Melilla"
-        },
-        {
-          "name": "Oficina Central Nacional de análisis de información sobre actividades ilícitas medioambientales"
-        },
-        {
-          "name": "Servicio de Protección y Seguridad - SEPROSE"
-        },
-        {
-          "name": "Centro Tecnológico de Seguridad (CETSE)"
-        },
-        {
-          "name": "Jefatura de Innovación Digital"
-        },
-        {
-          "name": "Jefatura Costas y Policía"
-        },
-        {
-          "name": "Jefatura Fiscal y de Fronteras"
-        }
-      ]
-    },
-    {
-      "name": "Subsecretaría del Interior",
-      "children": [
-        {
-          "name": "SG de Innovación, Calidad e Inspección de los Servicios"
-        },
-        {
-          "name": "SG de Gestión Económica y Patrimonial"
-        },
-        {
-          "name": "Oficialía Mayor (SG)"
-        },
-        {
-          "name": "SG de Recursos Humanos"
-        },
-        {
-          "name": "Vicesecretaría General Técnica"
-        },
-        {
-          "name": "SG de Recursos, Reclamaciones y Relaciones con los Tribunales"
-        },
-        {
-          "name": "SG de Asociaciones, Archivos y Documentación"
-        },
-        {
-          "name": "Secretaría General Técnica"
+          "name": "Centro de Inteligencia contra el Terrorismo y el Crimen Organizado (CITCO)",
+          "area": "seguridad",
+          "description": "<p>Centro dedicado a la <strong class='kw sec'>inteligencia</strong> y la coordinación en operaciones contra el <strong class='kw sec'>terrorismo</strong> y el <strong class='kw sec'>crimen organizado</strong>.</p>"
         }
       ]
     },
     {
       "name": "Secretaría General de Instituciones Penitenciarias",
+      "area": "penitenciarias",
+      "description": "<p>Gestiona la <strong class='kw pen'>ejecución penal</strong> y la <strong class='kw pen'>reinserción social</strong>, así como la administración de los <strong class='kw pen'>centros penitenciarios</strong>.</p>",
       "children": [
         {
-          "name": "Dirección General de Ejecución Penal y Reinserción Social"
+          "name": "Dirección General de Ejecución Penal y Reinserción Social",
+          "area": "penitenciarias",
+          "description": "<p>Promueve la <strong class='kw pen'>reinserción social</strong> y la <strong class='kw pen'>gestión de penas</strong>.</p>"
         },
         {
-          "name": "Trabajo Penitenciario y Formación de Empleo"
-        },
-        {
-          "name": "S.G Medio Abierto y Penas y Medidas Alternativas"
-        },
-        {
-          "name": "S.G de Sanidad Penitenciaria"
-        },
-        {
-          "name": "S.G de Análisis e Inspección"
-        },
-        {
-          "name": "S.G de Relaciones Institucionales y Coordinación Territorial"
-        },
-        {
-          "name": "S.G de Recursos Humanos"
-        },
-        {
-          "name": "S.G de Planificación y Gestión Económica"
+          "name": "Trabajo Penitenciario y Formación para el Empleo (Entidad adscrita)",
+          "area": "penitenciarias",
+          "description": "<p>Impulsa la <strong class='kw pen'>formación laboral</strong> y programas de <strong class='kw pen'>empleo</strong> para internos.</p>"
         }
       ]
     },
     {
-      "name": "Dirección General de Protección Civil y Emergencias",
+      "name": "Subsecretaría del Interior",
+      "area": "administracion",
+      "description": "<p>Se ocupa de la <strong class='kw adm'>gestión administrativa</strong>, la <strong class='kw adm'>política interior</strong> y organismos transversales como <strong class='kw adm'>Dirección General de Tráfico</strong>.</p>",
       "children": [
         {
-          "name": "SG de Gestión de Recursos y Subvenciones"
+          "name": "Dirección General de Tráfico (DGT)",
+          "area": "seguridad",
+          "description": "<p>Coordina las políticas de <strong class='kw sec'>seguridad vial</strong>, <strong class='kw sec'>formación</strong> y control del <strong class='kw sec'>tráfico</strong>.</p>"
         },
         {
-          "name": "SG de Formación y Relaciones Institucionales"
-        },
-        {
-          "name": "Escuela Nacional de Protección Civil"
-        },
-        {
-          "name": "SG de Apoyo a Víctimas del Terrorismo"
-        },
-        {
-          "name": "SG de Ayudas a Víctimas del Terrorismo"
-        },
-        {
-          "name": "SG de Prevención, Planificación y Emergencias"
-        },
-        {
-          "name": "Centro Europeo de Investigación Social de Situaciones de Emergencias (CEISE)"
-        }
-      ]
-    },
-    {
-      "name": "Dirección General de Tráfico",
-      "children": [
-        {
-          "name": "Observatorio Nacional de Seguridad Vial (SG)"
-        },
-        {
-          "name": "SG de Formación y Educación Vial"
-        },
-        {
-          "name": "Gerencia de Informática"
-        }
-      ]
-    },
-    {
-      "name": "Dirección General de Relaciones Internacionales y Extranjería",
-      "children": [
-        {
-          "name": "SG de Cooperación Policial Internacional"
-        },
-        {
-          "name": "SG de Relaciones Internacionales, Inmigración y Extranjería"
-        },
-        {
-          "name": "Secretaría de Cooperación Internacional"
-        }
-      ]
-    },
-    {
-      "name": "Dirección General de Política Interior",
-      "children": [
-        {
-          "name": "SG de Política Interior y Procesos Electorales"
-        },
-        {
-          "name": "Unidad de Normativa"
-        }
-      ]
-    },
-    {
-      "name": "Servicios y órganos transversales",
-      "children": [
-        {
-          "name": "Oficina Nacional de Lucha Contra los Delitos de Odio"
-        },
-        {
-          "name": "Oficina Nacional de Garantías de los Derechos Humanos (ONGADH)"
-        },
-        {
-          "name": "CEPOL (Unidad Nacional)"
-        },
-        {
-          "name": "OCC (Oficina Coordinación Ciberseguridad)"
-        },
-        {
-          "name": "Centro Nacional de Desaparecidos"
-        },
-        {
-          "name": "Inspección de Personal y Servicios de Seguridad"
-        },
-        {
-          "name": "Comisión Interministerial Permanente de Armas y Explosivos (CIPAE)"
-        },
-        {
-          "name": "Oficina Presupuestaria (SG)"
-        },
-        {
-          "name": "Gabinete Técnico (SG)"
+          "name": "Dirección General de Política Interior",
+          "area": "administracion",
+          "description": "<p>Encargada de la <strong class='kw adm'>política interior</strong> y procesos electorales.</p>"
         }
       ]
     }
   ],
-  "source": "Ministerio del Interior, Marzo 2024 (PDF provided by user).",
-  "source_file_citation": "fileciteturn1file1"
+  "source": "Ministerio del Interior — Real Decreto 207/2024"
 }

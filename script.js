@@ -1,100 +1,130 @@
 
-// Simple collapsible tree renderer (vertical)
-// Expects data.json in same folder.
-async function loadData(){ 
-  const res = await fetch('data.json');
-  const data = await res.json();
-  return data;
-}
+// Load data and render a vertical collapsible interactive tree with individual study mode
+async function loadData(){ const r = await fetch('data.json'); return await r.json(); }
 
-function createNodeEl(node, level=0){
+function createNode(node, level=0){
   const el = document.createElement('div');
   el.className = 'node lvl-' + Math.min(level,2);
-  el.textContent = node.name;
-  el.dataset.name = node.name;
-  el.dataset.level = level;
-  el.tabIndex = 0;
+  const left = document.createElement('div'); left.className='left';
+  const name = document.createElement('div'); name.className='name'; name.textContent = node.name;
+  left.appendChild(name);
+  el.appendChild(left);
 
-  el.addEventListener('click', (e)=>{
+  const actions = document.createElement('div'); actions.className='actions';
+  // expand icon if children
+  if(node.children && node.children.length){
+    const btn = document.createElement('button'); btn.className='toggle'; btn.textContent = '▸';
+    btn.title = 'Expandir/Contraer';
+    btn.addEventListener('click', (e)=>{
+      e.stopPropagation();
+      const branch = el.nextElementSibling;
+      if(branch && branch.classList.contains('tree-branch')){
+        if(branch.style.display === 'none'){ branch.style.display = ''; btn.textContent='▾'; }
+        else { branch.style.display = 'none'; btn.textContent='▸'; }
+      }
+    });
+    actions.appendChild(btn);
+  }
+  // study button
+  const study = document.createElement('button'); study.className='study'; study.textContent = '🎓';
+  study.title = 'Mostrar/Ocultar descripción en la ficha lateral y marcar como estudiada';
+  study.addEventListener('click',(e)=>{
     e.stopPropagation();
-    showInfo(node);
-    // toggle children
-    const branch = el.nextElementSibling;
-    if(branch && branch.classList.contains('tree-branch')){
-      branch.style.display = branch.style.display === 'none' ? '' : 'none';
-    }
+    showInfo(node, true);
+    markStudied(node);
   });
-  el.addEventListener('keydown', (e)=>{
-    if(e.key === 'Enter') el.click();
-  });
+  actions.appendChild(study);
+
+  el.appendChild(actions);
+  el.addEventListener('click', ()=> showInfo(node,false));
   return el;
 }
 
 function renderBranch(node, container, level=0){
-  const nodeEl = createNodeEl(node, level);
-  container.appendChild(nodeEl);
+  const n = createNode(node, level);
+  container.appendChild(n);
   if(node.children && node.children.length){
-    const branch = document.createElement('div');
-    branch.className = 'tree-branch';
-    // initially collapsed except top level
-    branch.style.display = level === 0 ? '' : 'none';
-    node.children.forEach(child => renderBranch(child, branch, level+1));
+    const branch = document.createElement('div'); branch.className='tree-branch'; branch.style.display = level===0 ? '' : 'none';
+    node.children.forEach(ch => renderBranch(ch, branch, level+1));
     container.appendChild(branch);
   }
 }
 
-function showInfo(node){
-  const title = document.getElementById('nodeTitle');
-  const desc = document.getElementById('nodeDesc');
+function showInfo(node, expandedByStudy=false){
+  const title = document.getElementById('nodeTitle'), desc = document.getElementById('nodeDesc');
   title.textContent = node.name || '—';
-  // Description: try to show level/type if available
-  let d = '';
-  if(node.title) d += '<p>' + node.title + '</p>';
-  if(node.children && node.children.length) d += '<p><strong>Contiene ' + node.children.length + ' subunidades</strong></p>';
-  d += '<p class="footer-small">Fuente: Ministerio del Interior — Marzo 2024.</p>';
-  desc.innerHTML = d;
+  if(node.description){
+    desc.innerHTML = node.description;
+  } else { desc.innerHTML = '<em>Sin descripción disponible</em>'; }
 }
 
-// Search
-function searchNodes(term){
-  term = term.trim().toLowerCase();
-  const nodes = document.querySelectorAll('.node');
-  nodes.forEach(n=>{
-    const name = n.dataset.name.toLowerCase();
-    if(!term) {
-      n.style.display = '';
-    } else {
-      n.style.display = name.includes(term) ? '' : 'none';
+let studiedSet = new Set();
+function markStudied(node){
+  if(!node || !node.name) return;
+  studiedSet.add(node.name);
+  document.getElementById('studiedCount').textContent = studiedSet.size;
+  // visually mark nodes studied
+  document.querySelectorAll('.node').forEach(n=>{
+    if(n.querySelector('.name').textContent && studiedSet.has(n.querySelector('.name').textContent)){
+      n.style.opacity = 0.6;
     }
   });
 }
 
-// Expand / Collapse all
-function setAllBranches(expand=true){
-  const branches = document.querySelectorAll('.tree-branch');
-  branches.forEach(b=> b.style.display = expand ? '' : 'none');
+// Search with suggestions
+function collectNames(list, arr){
+  function w(n){ arr.push(n.name); if(n.children) n.children.forEach(w); }
+  w(list);
 }
 
 document.addEventListener('DOMContentLoaded', async ()=>{
   const data = await loadData();
   const tree = document.getElementById('tree');
   renderBranch(data, tree, 0);
-  // wire controls
-  document.getElementById('search').addEventListener('input', (e)=>{
-    const val = e.target.value;
-    if(!val) {
-      // show all nodes and preserve branches collapsed state
-      document.querySelectorAll('.node').forEach(n=>n.style.display='');
-    } else {
-      searchNodes(val);
-      // expand all to help find matches
-      setAllBranches(true);
-    }
-  });
-  document.getElementById('expandAll').addEventListener('click', ()=> setAllBranches(true));
-  document.getElementById('collapseAll').addEventListener('click', ()=> setAllBranches(false));
 
-  // Accessibility: focus first node
-  const first = document.querySelector('.node');
-  if(first) first.focus();
+  // set totals
+  const names=[]; collectNames(data, names);
+  document.getElementById('totalCount').textContent = names.length;
+
+  // search
+  const input = document.getElementById('search'), sugg = document.getElementById('suggestions');
+  input.addEventListener('input', ()=>{
+    const v = input.value.trim().toLowerCase();
+    if(!v){ sugg.style.display='none'; document.querySelectorAll('.node').forEach(n=>n.style.display=''); return; }
+    const matches = names.filter(n=> n.toLowerCase().includes(v)).slice(0,8);
+    sugg.innerHTML='';
+    if(matches.length){
+      matches.forEach(m=>{
+        const d = document.createElement('div'); d.textContent = m;
+        d.addEventListener('click', ()=>{
+          input.value = m; sugg.style.display='none'; highlightNode(m);
+        });
+        sugg.appendChild(d);
+      });
+      sugg.style.display='block';
+    } else { sugg.style.display='none'; }
+  });
+  document.addEventListener('click', ()=>{ document.getElementById('suggestions').style.display='none'; });
+
+  document.getElementById('expandAll').addEventListener('click', ()=> document.querySelectorAll('.tree-branch').forEach(b=>b.style.display=''));
+  document.getElementById('collapseAll').addEventListener('click', ()=> document.querySelectorAll('.tree-branch').forEach(b=>b.style.display='none'));
+
+  // highlight and open node by name
+  window.highlightNode = function(name){
+    document.querySelectorAll('.node').forEach(n=> n.style.background='');
+    const elems = Array.from(document.querySelectorAll('.node')).filter(n=> n.querySelector('.name').textContent === name);
+    if(elems.length){
+      const el = elems[0];
+      el.scrollIntoView({behavior:'smooth', block:'center'});
+      el.style.background='linear-gradient(90deg, rgba(11,110,253,0.06), #fff)';
+      document.querySelectorAll('.tree-branch').forEach(b=> b.style.display='');
+      showInfo({name:name, description: findDescriptionByName(name, data)}, false);
+    }
+  };
+
+  function findDescriptionByName(name, node){
+    if(node.name === name) return node.description || null;
+    if(node.children) for(const c of node.children){ const r = findDescriptionByName(name,c); if(r) return r; }
+    return null;
+  }
 });

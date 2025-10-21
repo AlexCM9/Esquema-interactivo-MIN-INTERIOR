@@ -1,19 +1,31 @@
 <!doctype html>
 <html lang="es">
 <head>
-<meta charset="utf-8" />
-<meta name="viewport" content="width=device-width,initial-scale=1" />
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
 <title>Organigrama Interactivo - Ministerio del Interior</title>
 <link rel="stylesheet" href="style.css">
 </head>
 <body>
-<header>
-  <h1>Organigrama Interactivo<br><span>Ministerio del Interior (Marzo 2024)</span></h1>
-  <div class="controls">
-    <input id="search" placeholder="Buscar... (p. ej. Guardia Civil, Policía, CITCO)" />
-    <button id="expandAll">Expandir todo</button>
-    <button id="collapseAll">Contraer todo</button>
-    <a id="downloadJson" href="data.json" download>Descargar JSON</a>
+<header class="header">
+  <div class="header-inner">
+    <div class="brand">
+      <!-- Monochrome badge SVG -->
+      <svg id="escudo" width="56" height="56" viewBox="0 0 100 100" aria-hidden="true">
+        <circle cx="50" cy="50" r="48" fill="#0b6efd"/>
+        <text x="50" y="57" font-size="32" text-anchor="middle" fill="#fff" font-family="Arial">MI</text>
+      </svg>
+      <div class="title">
+        <h1>Ministerio del Interior</h1>
+      </div>
+    </div>
+    <div class="controls">
+      <input id="search" placeholder="Buscar (ej. Policía, CITCO, DGT)..." autocomplete="off">
+      <div id="suggestions" class="suggestions"></div>
+      <button id="expandAll">Expandir todo</button>
+      <button id="collapseAll">Contraer todo</button>
+      <a id="downloadJson" href="data.json" download>JSON</a>
+    </div>
   </div>
 </header>
 <main>
@@ -21,14 +33,12 @@
     <h2>Ficha</h2>
     <div id="nodeTitle">Selecciona un nodo</div>
     <div id="nodeDesc"></div>
-    <hr/>
-    <div class="source">Fuente: Ministerio del Interior — Marzo 2024. fileciteturn1file1</div>
+    <div id="progress" class="progress">Estudiadas: <span id="studiedCount">0</span> / <span id="totalCount">0</span></div>
+    <div class="source">Fuente: Ministerio del Interior — Real Decreto 207/2024</div>
   </aside>
-  <section id="tree"></section>
+  <section id="tree" aria-live="polite"></section>
 </main>
-<footer>
-  Generado automáticamente. Puedes abrir <strong>index.html</strong> en tu navegador (funciona sin conexión).
-</footer>
+<footer>Abre <strong>index.html</strong> en tu navegador. Funciona sin conexión.</footer>
 <script src="script.js"></script>
 </body>
 </html>

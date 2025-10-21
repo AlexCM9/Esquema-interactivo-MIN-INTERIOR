@@ -1,30 +1,40 @@
 
 :root{
-  --bg:#f6f8fb;
+  --bg:#f4f7fb;
   --card:#ffffff;
   --accent:#0b6efd;
-  --lvl1:#ffd966;
-  --lvl2:#8cd790;
-  --lvl3:#82cfff;
-  --text:#222;
+  --sec:#0b6efd;
+  --pen:#2f9e44;
+  --adm:#ff8c42;
+  --text:#17202a;
 }
 *{box-sizing:border-box}
-body{font-family:Inter, system-ui, -apple-system, 'Segoe UI', Roboto, 'Helvetica Neue', Arial; margin:0; background:var(--bg); color:var(--text)}
-header{padding:18px 24px; display:flex; flex-direction:column; gap:12px; background:linear-gradient(90deg, #0b6efd 0%, #2bb6ff 100%); color:white}
-header h1{margin:0; font-size:20px}
-header h1 span{font-size:12px; opacity:0.95}
-.controls{display:flex; gap:8px; align-items:center; flex-wrap:wrap}
-.controls input{padding:8px 10px; border-radius:6px; border:none; min-width:240px}
-.controls button, .controls a{padding:8px 10px; border-radius:6px; border:none; background:white; color:#0b6efd; cursor:pointer; text-decoration:none}
+body{font-family:Inter, system-ui, -apple-system, 'Segoe UI', Roboto, Arial; margin:0; background:var(--bg); color:var(--text)}
+.header{background:linear-gradient(90deg,var(--accent),#2bb6ff); color:#fff; padding:14px 18px}
+.header-inner{display:flex; justify-content:space-between; align-items:center; gap:16px; max-width:1200px; margin:0 auto}
+.brand{display:flex; gap:12px; align-items:center}
+.brand svg{border-radius:8px; box-shadow:0 6px 18px rgba(0,0,0,0.12)}
+.title h1{margin:0; font-size:18px}
+.controls{display:flex; gap:8px; align-items:center}
+.controls input{padding:8px 10px; border-radius:6px; border:none; min-width:260px}
+.controls button, .controls a{padding:8px 10px; border-radius:6px; border:none; background:#fff; color:var(--accent); cursor:pointer; text-decoration:none}
 main{display:flex; gap:12px; padding:18px; max-width:1200px; margin:18px auto}
-#info{width:300px; background:var(--card); padding:12px; border-radius:8px; box-shadow:0 6px 18px rgba(15,30,60,0.08)}
-#tree{flex:1; background:transparent; padding:12px; border-radius:8px; min-height:600px; overflow:auto}
-.node{display:inline-block; padding:10px 12px; border-radius:8px; background:var(--card); box-shadow:0 6px 18px rgba(15,30,60,0.06); margin:10px auto; cursor:pointer; border:2px solid transparent}
-.node.lvl-0{background:linear-gradient(180deg,var(--lvl1),#fff); border-color:rgba(0,0,0,0.06)}
-.node.lvl-1{background:linear-gradient(180deg,var(--lvl2),#fff); border-color:rgba(0,0,0,0.04)}
-.node.lvl-2{background:linear-gradient(180deg,var(--lvl3),#fff); border-color:rgba(0,0,0,0.03)}
-.tree-branch{margin-left:24px; border-left:2px dashed rgba(0,0,0,0.04); padding-left:18px}
-h2{margin:0 0 10px 0}
-.footer-small{font-size:12px; color:#666}
-.source{font-size:12px; color:#666; margin-top:10px}
-@media (max-width:900px){main{flex-direction:column} #info{width:100%}}
+#info{width:320px; background:var(--card); padding:14px; border-radius:8px; box-shadow:0 6px 18px rgba(15,30,60,0.06)}
+#tree{flex:1; background:transparent; padding:12px; border-radius:8px; min-height:520px; overflow:auto}
+.node{display:flex; align-items:center; justify-content:space-between; padding:8px 12px; border-radius:8px; background:var(--card); box-shadow:0 6px 16px rgba(15,30,60,0.04); margin:8px 0; cursor:pointer; border-left:6px solid transparent}
+.node .left{display:flex; gap:10px; align-items:center}
+.node .name{font-weight:600}
+.node .actions{display:flex; gap:8px; align-items:center}
+.node.lvl-0{border-left-color:var(--sec)}
+.node.lvl-1{border-left-color:var(--sec)}
+.node.lvl-2{border-left-color:var(--pen)}
+.tree-branch{margin-left:18px; padding-left:12px; border-left:2px dashed rgba(0,0,0,0.04)}
+.kwd{font-weight:700}
+.kw.sec{color:var(--sec)}
+.kw.pen{color:var(--pen)}
+.kw.adm{color:var(--adm)}
+.suggestions{position:absolute; background:#fff; box-shadow:0 6px 18px rgba(0,0,0,0.1); max-width:300px; z-index:30; border-radius:6px; overflow:hidden; display:none}
+.suggestions div{padding:8px; cursor:pointer; border-bottom:1px solid #eee}
+.progress{margin-top:12px; font-size:14px}
+footer{max-width:1200px; margin:14px auto; text-align:center; color:#666}
+@media (max-width:900px){main{flex-direction:column} #info{width:100%} .controls{flex-wrap:wrap} .suggestions{position:relative}}
